@@ -1,13 +1,22 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Home, Info, LogIn, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/useDispatch";
+import { logout } from "../../redux/slice/auth/AuthSlice";
 
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/"); // redirect ke home setelah logout
   };
 
   return (
@@ -48,13 +57,23 @@ const Navbar = () => {
                 <span className="font-medium">Stasiun</span>
               </Link>
               
-              <Link
-                to="/login"
-                className="flex items-center space-x-2 px-4 py-2 ml-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 group"
-              >
-                <LogIn className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-                <span className="font-semibold">Login</span>
-              </Link>
+                      {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-2 px-4 py-2 ml-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              <span className="font-semibold">Logout</span>
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="flex items-center space-x-2 px-4 py-2 ml-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 group"
+            >
+              <LogIn className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="font-semibold">Login</span>
+            </Link>
+          )}
+
             </div>
           </div>
 
