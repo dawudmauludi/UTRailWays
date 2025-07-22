@@ -1,0 +1,46 @@
+import { createBrowserRouter } from "react-router";
+import { AppLayouts } from "../pages/root";
+import ProtectedRoute from "./ProtectedRoute";
+import { Dashboard } from "../pages/Dashboard";
+import { Pengguna } from "../pages/Pengguna";
+import Login from "../pages/LoginForms";
+import { HomePage } from "../pages/HomePage";
+
+const Router = createBrowserRouter([
+    {
+        path: '/',
+        element: <AppLayouts/>,
+        children: [
+            {
+                path: '/',
+                element: <HomePage/>
+            },
+            {
+                path: '/login',
+                element: <Login/>
+            },
+             {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute role="admin">
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+  },
+   {
+    path: "/pengguna",
+    element: (
+      <ProtectedRoute role="user">
+        <Pengguna />
+      </ProtectedRoute>
+    ),
+  },
+  {
+  path: "/unauthorized",
+  element: <div>Unauthorized Access</div>
+}
+        ]
+    }
+]);
+
+export default Router
