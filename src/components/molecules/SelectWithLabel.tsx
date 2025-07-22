@@ -1,31 +1,34 @@
 import React from 'react';
-import Label from '../atoms/Label';
-import Select from '../atoms/Select';
 
-interface SelectWithLabelProps {
-  id?: string;
+interface Props {
+  id: string;
   label: string;
   value: string;
-  options: string[];
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: string[];
 }
 
-const SelectWithLabel: React.FC<SelectWithLabelProps> = ({
-  id,
-  label,
-  value,
-  options,
-  onChange,
-}) => (
-  <div className="mb-4">
-    <Label htmlFor={id}>{label}</Label>
-    <Select id={id} value={value} onChange={onChange}>
-      <option value="">-- Pilih --</option>
-      {options.map((option, idx) => (
-        <option key={idx} value={option}>{option}</option>
-      ))}
-    </Select>
-  </div>
-);
+const SelectWithLabel: React.FC<Props> = ({ id, label, value, onChange, options }) => {
+  return (
+    <div className="mb-4">
+      <label htmlFor={id} className="block font-medium mb-1">
+        {label}
+      </label>
+      <select
+        id={id}
+        value={value}
+        onChange={onChange}
+        className="w-full border p-2 rounded"
+      >
+        <option value="">Pilih {label}</option>
+        {options.map((opt, idx) => (
+          <option key={idx} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 export default SelectWithLabel;

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "../../hooks/useDispatch";
 import { logout } from "../../redux/slice/auth/AuthSlice";
+import CartIcon from "./cartIcon";
 
 const AppNavbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -38,6 +39,9 @@ const AppNavbar = () => {
             </Nav.Link>
             <Nav.Link as={Link as any} to="/about" onClick={() => setExpanded(false)}>
               Stasiun
+            </Nav.Link>
+            <Nav.Link as={Link as any} to="/cart" onClick={() => setExpanded(false)}>
+               <CartIcon />
             </Nav.Link>
           </Nav>
 

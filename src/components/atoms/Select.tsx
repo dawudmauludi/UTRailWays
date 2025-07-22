@@ -1,20 +1,20 @@
 import React from 'react';
 
-interface SelectProps {
-  id?: string;
+interface Props {
+  id: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  children: React.ReactNode;
+  options: string[];
 }
 
-const Select: React.FC<SelectProps> = ({ id, value, onChange, children }) => (
-  <select
-    id={id}
-    value={value}
-    onChange={onChange}
-    className="block w-full border border-gray-300 rounded-md p-2"
-  >
-    {children}
+const Select: React.FC<Props> = ({ id, value, onChange, options }) => (
+  <select id={id} value={value} onChange={onChange} className="w-full border p-2 rounded">
+    <option value="">-- Pilih --</option>
+    {options.map((option, idx) => (
+      <option key={idx} value={option}>
+        {option}
+      </option>
+    ))}
   </select>
 );
 
