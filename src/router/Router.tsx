@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { AppLayouts } from "../pages/root";
 import ProtectedRoute from "./ProtectedRoute";
-import { Dashboard } from "../pages/Dashboard";
+import { Dashboard } from "../pages/admin/Dashboard";
 import { Pengguna } from "../pages/Pengguna";
 import Login from "../pages/LoginForms";
 import { HomePage } from "../pages/HomePage";
