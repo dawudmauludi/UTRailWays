@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Home, Info, LogIn, Menu, X } from "lucide-react";
 import { useState } from "react";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
