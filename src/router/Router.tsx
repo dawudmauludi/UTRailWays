@@ -4,7 +4,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import { Dashboard } from "../pages/admin/Dashboard";
 import { Pengguna } from "../pages/Pengguna";
 import Login from "../pages/LoginForms";
-import { HomePage } from "../pages/HomePage";
+import CartPage from "../pages/CartPages";
+import HomePage from "../pages/HomePage";
 
 const Router = createBrowserRouter([
     {
