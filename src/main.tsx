@@ -6,6 +6,8 @@ import { store } from './app/store'
 import { RouterProvider } from 'react-router'
 import router from './router/Router'
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
     <Provider store={store}>
