@@ -20,9 +20,11 @@ const AppNavbar = () => {
       expand="lg"
       bg="dark"
       variant="dark"
+      fixed="top"
       expanded={expanded}
       onToggle={() => setExpanded(!expanded)}
       className="shadow"
+      style={{ zIndex: 9999,  }}
     >
       <Container>
         <Navbar.Brand as={Link as any} to="/">
